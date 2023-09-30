@@ -35,6 +35,20 @@ void selectionSort(int *array, int n)
     }
 }
 
+void insertionSort(int *array, int n){
+    int key;
+    int j;
+    for (int i = 1; i < n; i++){
+        key = array[i];
+        j=i-1;
+        while (j > -1 && array[j] > key){
+            array[j + 1] = array[j];
+            j--;
+        }
+        array[j + 1] = key;
+    }
+}
+
 int main()
 {
     srand(time(NULL));
@@ -47,6 +61,7 @@ int main()
     }
     array1 = array;
     array2 = array;
+    array3 = array;
     printf("\n");
     bubbleSort(array1, SIZE);
     printf("Sorted Array: \n");
@@ -54,10 +69,16 @@ int main()
         printf("%d ", array1[i]);
     }
     printf("\n");
-    selectionSort(array2, SIZE);
+    insertionSort(array2, SIZE);
     printf("Sorted Array: \n");
     for (int i = 0; i < SIZE; i++){
         printf("%d ", array2[i]);
+    }
+    printf("\n");
+    selectionSort(array3, SIZE);
+    printf("Sorted Array: \n");
+    for (int i = 0; i < SIZE; i++){
+        printf("%d ", array3[i]);
     }
     return 0;
 }
